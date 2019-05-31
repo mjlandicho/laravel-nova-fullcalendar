@@ -1,16 +1,18 @@
 <template>
   <div>
 
-<full-calendar :events="events" locale="en"></full-calendar>
+<full-calendar defaultView="dayGridMonth" :plugins="calendarPlugins"  :events="events" locale="en"></full-calendar>
 
   </div>
 </template>
 
 <script>
+import FullCalendar from '@fullcalendar/vue'
+import dayGridPlugin from '@fullcalendar/daygrid'
 
 var agenda = [
 	{
-      title : 'Sunny Out of Office',
+      title : 'Holiday',
       start : '2019-05-25',
       end : '2019-05-27'
     }
@@ -19,11 +21,19 @@ var agenda = [
 export default {
   data () {
 	return {
+      calendarPlugins: [ dayGridPlugin ],
 	  events : agenda
 	}
   },
+
+  methods:{
+       showEvents(){
+           axios.get('?').then(({data}) => (this.events = data.data));
+        },
+  },
+  
   components : {
-	'full-calendar': require('vue-fullcalendar')	
+	FullCalendar	
   }
 }
 

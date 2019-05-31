@@ -7,10 +7,10 @@ Nova.booting((Vue, router, store) => {
         },
     ])
 })
-import Vue from "vue"
-import FullCalendar from '@fullcalendar/vue'
-import dayGridPlugin from '@fullcalendar/daygrid'
+// import Vue from "vue"
+// import FullCalendar from '@fullcalendar/vue'
+// import dayGridPlugin from '@fullcalendar/daygrid'
 
 
-Vue.use(FullCalendar);
+// Vue.use(FullCalendar);
 
