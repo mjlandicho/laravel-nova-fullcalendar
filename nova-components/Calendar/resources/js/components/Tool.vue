@@ -1,39 +1,29 @@
 <template>
-  <div class='demo-app'>
-    <div class='demo-app-top'>
-      <button @click="toggleWeekends">toggle weekends</button>
-      <button @click="gotoPast">go to a date in the past</button>
-      (also, click a date/time to add an event)
-    </div>
-    <FullCalendar
-      class='demo-app-calendar'
-      ref="fullCalendar"
-      defaultView="dayGridMonth"
-      :header="{
-        center: 'title',
-        left: 'prev,next today',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-      }"
-      :plugins="calendarPlugins"
-      :weekends="calendarWeekends"
-      :events="calendarEvents"
-      @dateClick="handleDateClick"
-      />
+  <div>
+
+<full-calendar :events="events" locale="en"></full-calendar>
+
   </div>
 </template>
 
 <script>
-import FullCalendar from '@fullcalendar/vue'
-import dayGridPlugin from '@fullcalendar/daygrid'
+
+var agenda = [
+	{
+      title : 'Sunny Out of Office',
+      start : '2019-05-25',
+      end : '2019-05-27'
+    }
+]
 
 export default {
-  components: {
-    FullCalendar // make the <FullCalendar> tag available
+  data () {
+	return {
+	  events : agenda
+	}
   },
-  data() {
-    return {
-      calendarPlugins: [ dayGridPlugin ]
-    }
+  components : {
+	'full-calendar': require('vue-fullcalendar')	
   }
 }
 
