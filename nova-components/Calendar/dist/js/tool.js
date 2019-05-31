@@ -616,17 +616,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var agenda = [{
-  title: 'Holiday',
-  start: '2019-05-25',
-  end: '2019-05-27'
-}];
+// var agenda = [
+// 	{
+//       title : 'Holiday',
+//       start : '2019-05-25',
+//       end : '2019-05-27'
+//     }
+// ]
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       calendarPlugins: [__WEBPACK_IMPORTED_MODULE_1__fullcalendar_daygrid___default.a],
-      events: agenda
+      events: [{
+        title: 'Holiday',
+        start: '2019-05-25',
+        end: '2019-05-27'
+      }]
     };
   },
 

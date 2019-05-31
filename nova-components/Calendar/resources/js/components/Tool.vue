@@ -10,19 +10,23 @@
 import FullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
 
-var agenda = [
-	{
-      title : 'Holiday',
-      start : '2019-05-25',
-      end : '2019-05-27'
-    }
-]
+// var agenda = [
+// 	{
+//       title : 'Holiday',
+//       start : '2019-05-25',
+//       end : '2019-05-27'
+//     }
+// ]
 
 export default {
   data () {
 	return {
       calendarPlugins: [ dayGridPlugin ],
-	  events : agenda
+      events : [{
+        title : 'Holiday',
+        start : '2019-05-25',
+        end : '2019-05-27'
+      }]
 	}
   },
 
@@ -31,7 +35,7 @@ export default {
            axios.get('?').then(({data}) => (this.events = data.data));
         },
   },
-  
+
   components : {
 	FullCalendar	
   }
