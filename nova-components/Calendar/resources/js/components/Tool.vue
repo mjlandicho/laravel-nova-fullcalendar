@@ -1,7 +1,10 @@
 <template>
   <div>
 
-<full-calendar defaultView="dayGridMonth" :plugins="calendarPlugins"  :events="events" locale="en"></full-calendar>
+<full-calendar :events="events"  defaultView="dayGridMonth" :plugins="calendarPlugins">
+
+</full-calendar>
+
 
   </div>
 </template>
@@ -20,26 +23,36 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 
 export default {
   data () {
-	return {
-      calendarPlugins: [ dayGridPlugin ],
-      events : [{
-        title : 'Holiday',
-        start : '2019-05-25',
-        end : '2019-05-27'
-      }]
-	}
+    return {
+        calendarPlugins: [ dayGridPlugin ],
+        contentHeight: 400,
+        events: null
+    }
   },
-
   methods:{
        showEvents(){
-           axios.get('?').then(({data}) => (this.events = data.data));
-        },
+        axios.get('/nova-vendor/Calendar/events').then((data) => {
+          let eventList = [];
+          data.data.forEach(element => {
+            eventList.push({
+              title: element.title,
+              start: element.start_date,
+              end: element.end_date
+            });
+          });
+          this.events = eventList;
+        });
+      }
   },
 
   components : {
 	FullCalendar	
+  },
+  mounted() {
+    this.showEvents();
   }
 }
+
 
 </script>
 
